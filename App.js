@@ -60,13 +60,7 @@ import {
 		<Text style={styles._category}>CATEGORY</Text>
 		<View style={styles._Line1}></View>
 		
-		<View style={styles.view}>
-      <SearchBar
-        placeholder="Type Here..."
-        onChangeText={this.updateSearch}
-        value={search}
-      />
-    </View>
+	
 		
 			
 		<View style = {styles._rectangle}>
