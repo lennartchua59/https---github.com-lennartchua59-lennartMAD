@@ -7,7 +7,7 @@
  * 
  * home - Stylesheet
  */
- import * as React from 'react';
+ 
  import React, { Component, useState } from 'react';
  import {
    Platform,
