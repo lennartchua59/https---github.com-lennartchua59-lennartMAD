@@ -22,7 +22,7 @@
    
  } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-
+import { SearchBar } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -60,7 +60,13 @@ import {
 		<Text style={styles._category}>CATEGORY</Text>
 		<View style={styles._Line1}></View>
 		
-		
+		<View style={styles.view}>
+      <SearchBar
+        placeholder="Type Here..."
+        onChangeText={this.updateSearch}
+        value={search}
+      />
+    </View>
 		
 			
 		<View style = {styles._rectangle}>
@@ -461,6 +467,10 @@ import {
 		transform: [
 			{rotate: "45deg"}
 		]
+	},
+	view : {
+		top: 10,
+		left: 20
 	}
  });
  
