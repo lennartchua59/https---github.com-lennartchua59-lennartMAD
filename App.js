@@ -60,13 +60,9 @@ import {
 		<Text style={styles._category}>CATEGORY</Text>
 		<View style={styles._Line1}></View>
 		
-		<View style={styles.view}>
-      <SearchBar
-        placeholder="Type Here..."
-        onChangeText={this.updateSearch}
-        value={search}
-      />
-    </View>
+
+      
+    
 		
 			
 		<View style = {styles._rectangle}>
@@ -115,14 +111,7 @@ import {
 			
 			
 		</View>
-		<View style={styles._circle1}>
-		<TouchableOpacity
-                    onPress={() => props.navigation.navigate('work')}
-                    style={styles.iconwork1}
-
-                ><Icon name="work" size={25} color="white"  />
-                </TouchableOpacity>
-		</View>
+		
 		<View style={styles._circle2}></View>
 		<View style={styles._circle3}></View>
 		<Text style={styles._plus}>+</Text>
