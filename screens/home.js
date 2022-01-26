@@ -7,7 +7,7 @@
  * 
  * home - Stylesheet
  */
- import * as React from 'react';
+ 
  import React, { Component, useState } from 'react';
  import {
    Platform,
@@ -22,7 +22,8 @@
    
  } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-
+import { SearchBar } from 'react-native-elements';
+import { NavigationContainer } from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
@@ -59,7 +60,13 @@ import {
 		<Text style={styles._category}>CATEGORY</Text>
 		<View style={styles._Line1}></View>
 		
-		
+		<View style={styles.view}>
+      <SearchBar
+        placeholder="Type Here..."
+        onChangeText={this.updateSearch}
+        value={search}
+      />
+    </View>
 		
 			
 		<View style = {styles._rectangle}>
@@ -108,14 +115,8 @@ import {
 			
 			
 		</View>
-		<View style={styles._circle1}>
-		<TouchableOpacity
-                    onPress={() => props.navigation.navigate('work')}
-                    style={styles.iconwork1}
-
-                ><Icon name="work" size={25} color="white"  />
-                </TouchableOpacity>
-		</View>
+		<View style={styles._circle1}></View>
+		
 		<View style={styles._circle2}></View>
 		<View style={styles._circle3}></View>
 		<Text style={styles._plus}>+</Text>
@@ -460,6 +461,10 @@ import {
 		transform: [
 			{rotate: "45deg"}
 		]
+	},
+	view : {
+		top: 10,
+		left: 20
 	}
  });
  
