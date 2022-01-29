@@ -8,19 +8,10 @@
  * Practical 3 - Stylesheet
  */
 
- import React, { Component } from 'react';
- import {
-   Platform,
-   StyleSheet,
-   TextInput,
-   Image,
-   Button,
-   Text,
-   TouchableOpacity,
-   View,
-   SafeAreaView
- } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+ import React, {useState} from 'react';
+ import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
+ import Task from './components/Task';
+ 
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon1 from 'react-native-vector-icons/Fontisto';
@@ -34,17 +25,28 @@ import {
 		Roboto_400Regular
 	} from "@expo-google-fonts/dev";
  
+ export default function App() {
+ const [task, setTask] = useState();
+ const [taskItems, setTaskItems] = useState([]);
+
+ const handleAddTask = () => {
+   Keyboard.dismiss();
+   setTaskItems([...taskItems, task])
+   setTask(null);
+ }
+
+ const completeTask = (index) => {
+   let itemsCopy = [...taskItems];
+   itemsCopy.splice(index, 1);
+   setTaskItems(itemsCopy)
+ }
  
- 
- const App = () => {
    return (
 	 <View style={styles.container}>
 	  
 		{/* app name */}
 	   <Text style={styles.welcome}>ReminDING</Text>
-	   <View style={styles.iconedit}>
-			<Icon3 name="edit" size={22} color="white" />
-			</View>
+	   
 
 	    {/* Search */}
 		<View>
@@ -65,50 +67,34 @@ import {
 
 
 		{/*BODY */}
+		<ScrollView
+        contentContainerStyle={{
+          flexGrow: 1
+        }}
+        keyboardShouldPersistTaps='handled'
+      >
+
+      {/* Today's Tasks */}
+      <View style={styles.tasksWrapper}>
+      
+        <View style={styles.items}>
+          {/* This is where the tasks will go! */}
+          {
+            taskItems.map((item, index) => {
+              return (
+                <TouchableOpacity key={index}  onPress={() => completeTask(index)}>
+                  <Task text={item} /> 
+                </TouchableOpacity>
+              )
+            })
+          }
+        </View>
+      </View>
+        
+      </ScrollView>
 		
 	
-		<View style={styles.Line1}></View>
-		<View style={styles.check}>
-			<Icon3 name="circle" size={15} color="white"/>
-		</View>
-		<Text style={styles.text1}>Start work</Text>
-		<Text style={styles.subtext1}>10/12/2021  9:00 am</Text>
-		<View style={styles.lines1}></View>
-		<View style={styles.toggle1}>
-		<Icon5 name="toggle-off" size={20} color="white" />
-		</View>		
 		
-		
-		
-
-
-
-
-	
-		<View style={styles.Line2}></View>
-		<View style={styles.check1}>
-			<Icon3 name="circle" size={15} color="white"/>
-		</View>
-		<Text style={styles.text2}>Meeting</Text>
-		<Text style={styles.subtext2}>10/12/2021  2:00 pm</Text>
-		<View style={styles.lines2}></View>
-		<View style={styles.toggle2}>
-		<Icon5 name="toggle-off" size={20} color="white" />
-		</View>		
-
-
-		<View style={styles.Line3}></View>
-		<View style={styles.tick}>
-			<Icon3 name="check-circle" size={15} color="white"/>
-		</View>
-		<Text style={styles.text3}>Project due</Text>
-		<Text style={styles.subtext3}>2/2/2021  12:00 pm</Text>
-		<View style={styles.lines3}></View>
-		<View style={styles.toggle3}>
-		<Icon5 name="toggle-off" size={20} color="white" />
-		</View>	
-
-
 		
 
 
@@ -153,30 +139,52 @@ import {
 			
 			
 		</View>
-		<View style={styles._circle1}></View>
-		<View style={styles._circle2}></View>
-		<View style={styles._circle3}></View>
-		<Text style={styles._plus}>+</Text>
-		<View style={styles._circle4}></View>
-		<View style={styles._circle5}></View>
-
-		<View>
-			<View style ={styles.iconwork1}>
+		<View style={styles._circle1}>
+		<View style ={styles.iconwork1}>
 			<Icon2 name="work" size={25} color="white"  />
 			</View>
-			<View style ={styles.icongym1}>
+		</View>
+		<View style={styles._circle2}>
+		<View style ={styles.icongym1}>
 			<Icon4 name="dumbbell" size={20} color="white" />
 			</View>
-			<View style ={styles.iconnotes1}>
+		</View>
+		<KeyboardAvoidingView 
+        
+        style={styles.writeTaskWrapper}
+      >
+        <TextInput style={styles.input} placeholder={'\t\t\tType Reminder'} placeholderTextColor="grey" value={task} onChangeText={text => setTask(text)} />
+        <TouchableOpacity onPress={() => handleAddTask()}>
+          <View style={styles.addWrapper}>
+            <Text style={styles.addText}>+</Text>
+          </View>
+        </TouchableOpacity>
+		</KeyboardAvoidingView>
+		
+		<View style={styles._circle4}>
+		<View style ={styles.iconnotes1}>
 			<Icon name="note-text" size={25} color="white" />
 			</View>
-			<View style={styles.iconbook1}>
+		</View>
+		<View style={styles._circle5}>
+		<View style={styles.iconbook1}>
 			<Icon3 name="book-open" size={22} color="white" />
 			</View>
 		</View>
 
+		<View>
+			
+			
+			
+			
+		</View>
+
 		
-    
+    {/* Write a task */}
+      {/* Uses a keyboard avoiding view which ensures the keyboard does not cover the items on screen */}
+     
+     
+
     
     
 
@@ -188,7 +196,7 @@ import {
 
 		
 
-
+	}
 
 	 
 
@@ -196,7 +204,7 @@ import {
 
 	
    
- }
+ 
  
  const styles = StyleSheet.create({
    container: {
@@ -204,6 +212,54 @@ import {
 	 paddingTop: 100,
 	 backgroundColor: 'black',
    },
+   tasksWrapper: {
+    paddingTop: 20,
+    paddingHorizontal: 40,
+	left: 10
+  },
+  items: {
+    marginTop: 10,
+  },
+  writeTaskWrapper: {
+	position: 'absolute',
+    bottom: 60,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+    
+  },
+  input: {
+   
+    backgroundColor: 'rgba(98, 90, 90, 1)',
+    borderRadius: 60,
+	width: 150,
+	height: 40,
+	top: 70,
+	left:78
+    
+  
+   
+  },
+  addWrapper: {
+    width: 70,
+    height: 70,
+    backgroundColor: 'rgba(98, 90, 90, 1)',
+    borderRadius: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+	left:-119,
+	bottom:0
+   
+
+  },
+  addText: {
+	  fontSize:70,
+	  bottom:15,
+	  left:0,
+	  color:"black"
+ 	 
+	},
    welcome: {
 	 top: 0,
 	 flexDirection: 'row',
@@ -270,7 +326,7 @@ searchText: {
  _Line1: {
 	height :1,
  	width:40,
-	left: 53.5,
+	left: 53,
 	top: 10,
  	backgroundColor: 'grey'
  },
@@ -456,38 +512,39 @@ searchText: {
 	  },
 		iconwork1:{
 			position: "absolute",
-			left: 56,
-			top:483,
+			left: 10,
+			top:10,
 			transform: [
 				{rotate: "-45deg"}
 			]
 		},
 		icongym1: {
 			position: "absolute",
-			left: 107 ,
-			top:446,
+			left: 12 ,
+			top:13,
 			transform: [
 				{rotate: "-30deg"}
 			]
 		
 		},
-		iconnotes1: {
-			position: "absolute",
-			left: 256,
-			top:444,
-			transform: [
-				{rotate: "30deg"}
-			]
-		
-		},
 		iconbook1: {
 			position: "absolute",
-			left: 305,
-			top: 485,
+			left: 12,
+			top: 13,
+			transform: [
+				{rotate: "35deg"}
+			]
+		},
+		iconnotes1: {
+			position: "absolute",
+			left:12,
+			top:12,
 			transform: [
 				{rotate: "45deg"}
 			]
+		
 		},
+	
 	check: {
 		position:"absolute",
 		top:147,
@@ -564,5 +621,5 @@ searchText: {
 		
   });
  
- export default App;
+
   

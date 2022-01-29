@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     marginBottom: 1,
     
     
+    
   },
   itemLeft: {
     flexDirection: 'row',
@@ -35,9 +36,9 @@ const styles = StyleSheet.create({
     
   },
   circle: {
-    width: 12,
-    height: 12,
-    borderColor: 'grey',
+    width: 5,
+    height: 5,
+    borderColor: 'rgba(41, 37, 37, 1)',
     borderWidth: 2,
     borderRadius: 5,
 
@@ -45,15 +46,11 @@ const styles = StyleSheet.create({
   },
   itemText: {
     maxWidth: '80%',
-    color:"white"
+    color:"white",
+    fontSize: 15
+    
   },
-  circular: {
-    width: 12,
-    height: 12,
-    borderColor: 'grey',
-    borderWidth: 2,
-    borderRadius: 5,
-  },
+ 
   line: {
     height :2,
     width: 250,

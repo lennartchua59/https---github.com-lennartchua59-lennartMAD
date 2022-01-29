@@ -5,10 +5,10 @@
  * @format
  * @flow
  * 
- * home - Stylesheet
+ * Practical 3 - Stylesheet
  */
- 
- import React, { Component, useState } from 'react';
+
+ import React, { Component } from 'react';
  import {
    Platform,
    StyleSheet,
@@ -18,63 +18,24 @@
    Text,
    TouchableOpacity,
    View,
-   SafeAreaView,
-   props
-   
+   SafeAreaView
  } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { SearchBar } from 'react-native-elements';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/Feather';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
-import home from './screens/home';
-import work from './screens/work';
-
-
 import {
 	useFonts,
 		Roboto_400Regular
 	} from "@expo-google-fonts/dev";
  
-	const Stack = createNativeStackNavigator();
-
-	const  mystack = () => {
-		return (
-		  <NavigationContainer>
-			<Stack.Navigator>
-			  <Stack.Screen
-				name="Home"
-				component={Home}
-			  />
-			  <Stack.Screen name="work" component={work} />
-			</Stack.Navigator>
-		  </NavigationContainer>
-		);
-	  };
-
-
-	  const Home = ({ navigation }) => {
-		return (
-		  <Button
-			title="work reminder page"
-			onPress={() =>
-
-			  navigation.navigate('work')
-			}
-		  />
-		);
-	  };
-	
+ 
  
  const App = () => {
    return (
-	<NavigationContainer>
 	 <View style={styles.container}>
 		 
 	
@@ -96,7 +57,7 @@ import {
 		<Text style={styles._category}>CATEGORY</Text>
 		<View style={styles._Line1}></View>
 		
-	
+		
 		
 			
 		<View style = {styles._rectangle}>
@@ -127,9 +88,7 @@ import {
 			<View style={styles.iconbook}>
 			<Icon2 name="book-open" size={22} color="white" />
 			</View>
-			<View style={styles.iconedit}>
-			<Icon2 name="edit" size={22} color="white" />
-			</View>
+			
 			
 
 		</View>
@@ -145,36 +104,32 @@ import {
 			
 			
 		</View>
-		
 		<View style={styles._circle1}>
-		<TouchableOpacity onPress={ Home }
-				style={styles.iconwork1}>
-					<Icon name="work" size={25} color="white"  />
-				</TouchableOpacity>
-		</View>
+            <View style ={styles.iconwork1}>
+			<Icon name="work" size={35} color="white"  />
+			</View></View>
+		<View style={styles._circle2}>
+            <View style ={styles.icongym1}>
+			<Icon1 name="dumbbell" size={35} color="white" />
+			</View></View>
 		
 		
-		
-		<View style={styles._circle2}></View>
-		<View style={styles._circle3}></View>
-		<Text style={styles._plus}>+</Text>
-		<View style={styles._circle4}></View>
-		<View style={styles._circle5}></View>
+		<View style={styles._circle4}>
+        <View style ={styles.iconnotes1}>
+			<Icon3 name="note-text" size={35} color="white" />
+			</View>
+        </View>
+		<View style={styles._circle5}>
+        <View style={styles.iconbook1}>
+			<Icon2 name="book-open" size={35} color="white" />
+			</View>
+        </View>
 
 		<View>
-            
-				
 			
 			
-			<View style ={styles.icongym1}>
-			<Icon1 name="dumbbell" size={20} color="white" />
-			</View>
-			<View style ={styles.iconnotes1}>
-			<Icon3 name="note-text" size={25} color="white" />
-			</View>
-			<View style={styles.iconbook1}>
-			<Icon2 name="book-open" size={22} color="white" />
-			</View>
+			
+			
 		</View>
 		
 
@@ -182,7 +137,6 @@ import {
     
     
     	</View>
-		</NavigationContainer>
   );
 
     
@@ -386,8 +340,8 @@ import {
 	},
 	_circle1 : {
 		position: "absolute",
-		width: 50,
-		height: 50,
+		width: 70,
+		height: 70,
 		borderRadius:  1000,
 		backgroundColor: "rgba(98, 90, 90, 1)",
 		left: 45,
@@ -398,54 +352,36 @@ import {
 	},
 	_circle2: {
 		position: "absolute",
-		width: 50,
-		height: 50,
+		width: 70,
+		height: 70,
 		borderRadius:  1000,
 		backgroundColor: "rgba(98, 90, 90, 1)",
-		left: 95,
+		left: 120,
 		bottom: 45,
 	},
 
-	_circle3: {
+
+	_circle4: {
 		position: "absolute",
 		width: 70,
 		height: 70,
 		borderRadius:  1000,
 		backgroundColor: "rgba(98, 90, 90, 1)",
-		left: 155,
-		bottom: 45,
-
-	},
-	_circle4: {
-		position: "absolute",
-		width: 50,
-		height: 50,
-		borderRadius:  1000,
-		backgroundColor: "rgba(98, 90, 90, 1)",
-		left: 292,
-		bottom: 5,
+		left: 279,
+		bottom: 6,
 
 	},
 	_circle5: {
 		position: "absolute",
-		width: 50,
-		height: 50,
+		width: 70,
+		height: 70,
 		borderRadius:  1000,
 		backgroundColor: "rgba(98, 90, 90, 1)",
-		left: 243,
+		left: 200,
 		bottom: 45,
 
 	},
-	_plus: {
-		flexDirection: 'row',
-		position: "absolute",
-		left: 170,
-		bottom: 40,
-		fontSize: 70,
-		color: "black",
 
-
-	},
 	iconsearch:{
 		left: 300,
 		top: -24
@@ -472,42 +408,39 @@ import {
 	},
 	iconwork1:{
 		position: "absolute",
-		left: 10,
-		top:10,
+		left: 14,
+		top:15,
 		transform: [
 			{rotate: "-45deg"}
 		]
 	},
 	icongym1: {
 		position: "absolute",
-		left: 107,
-		top:458,
+		left: 12,
+		top:14,
 		transform: [
 			{rotate: "-30deg"}
 		]
 
 	},
-	iconnotes1: {
+	
+	iconbook1: {
 		position: "absolute",
-		left: 256,
-		top:456,
+		left: 16,
+		top: 16,
 		transform: [
 			{rotate: "30deg"}
 		]
-
 	},
-	iconbook1: {
+    iconnotes1: {
 		position: "absolute",
-		left: 305,
-		top: 497,
+		left: 18,
+		top:15,
 		transform: [
 			{rotate: "45deg"}
 		]
+
 	},
-	view : {
-		top: 10,
-		left: 20
-	}
  });
  
  export default App;
