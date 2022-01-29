@@ -19,26 +19,62 @@
    TouchableOpacity,
    View,
    SafeAreaView,
+   props
    
  } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { SearchBar } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/Feather';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 
+
+import home from './screens/home';
+import work from './screens/work';
+
+
 import {
 	useFonts,
 		Roboto_400Regular
 	} from "@expo-google-fonts/dev";
  
- 
+	const Stack = createNativeStackNavigator();
+
+	const  mystack = () => {
+		return (
+		  <NavigationContainer>
+			<Stack.Navigator>
+			  <Stack.Screen
+				name="Home"
+				component={Home}
+			  />
+			  <Stack.Screen name="work" component={work} />
+			</Stack.Navigator>
+		  </NavigationContainer>
+		);
+	  };
+
+
+	  const Home = ({ navigation }) => {
+		return (
+		  <Button
+			title="work reminder page"
+			onPress={() =>
+
+			  navigation.navigate('work')
+			}
+		  />
+		);
+	  };
+	
  
  const App = () => {
    return (
+	<NavigationContainer>
 	 <View style={styles.container}>
 		 
 	
@@ -60,13 +96,7 @@ import {
 		<Text style={styles._category}>CATEGORY</Text>
 		<View style={styles._Line1}></View>
 		
-		<View style={styles.view}>
-      <SearchBar
-        placeholder="Type Here..."
-        onChangeText={this.updateSearch}
-        value={search}
-      />
-    </View>
+	
 		
 			
 		<View style = {styles._rectangle}>
@@ -115,7 +145,15 @@ import {
 			
 			
 		</View>
-		<View style={styles._circle1}></View>
+		
+		<View style={styles._circle1}>
+		<TouchableOpacity onPress={ Home }
+				style={styles.iconwork1}>
+					<Icon name="work" size={25} color="white"  />
+				</TouchableOpacity>
+		</View>
+		
+		
 		
 		<View style={styles._circle2}></View>
 		<View style={styles._circle3}></View>
@@ -124,6 +162,9 @@ import {
 		<View style={styles._circle5}></View>
 
 		<View>
+            
+				
+			
 			
 			<View style ={styles.icongym1}>
 			<Icon1 name="dumbbell" size={20} color="white" />
@@ -141,6 +182,7 @@ import {
     
     
     	</View>
+		</NavigationContainer>
   );
 
     
