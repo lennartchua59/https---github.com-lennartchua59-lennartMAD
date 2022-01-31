@@ -172,14 +172,7 @@ import {
 	 color: 'white',
    },
   
-   footer: {
-	 width: '100%',
-	 alignItems: 'center',
-	 justifyContent: 'center',
-	 flexDirection: 'row',
-	 position: 'absolute',
-	 bottom: 0
-   },
+   
    _rectangle:{
 	position: "absolute",
 		width: 330,
