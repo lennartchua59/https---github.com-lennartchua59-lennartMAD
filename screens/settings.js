@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {  useState } from 'react';
  import {
  
      StyleSheet,
@@ -13,12 +13,18 @@ import React, { Component } from 'react';
  import Icon3 from "react-native-vector-icons/Feather";
  import Icon4 from 'react-native-vector-icons/FontAwesome5';
  import Icon6 from 'react-native-vector-icons/FontAwesome';
-;
+
+ 	import CustomSwitch from './components/customswitch';
    import { Searchbar } from 'react-native-paper';
- 
- 
+  
+   import { Switch } from 'react-native-switch';
  
  const Settings = () => {
+    const [isEnabled, setIsEnabled] = useState(false);
+	
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+ 
+       
      return (
          <View style={styles.container}>
  
@@ -29,21 +35,28 @@ import React, { Component } from 'react';
 
 		</View>
              
- 
+		
  
  
  
              <View style={styles._rectangle}>
-                 <Text style={styles._txt1}>Allow notifications</Text>
-                 <View style={styles.icontoggle}>
-                     <Icon6 name="toggle-on" size={30} color="white" />
-                 </View>
+				 
+             <Text style={styles._txt1}>Allow notifications</Text>
+			 <View styles={styles.button}>
+			 <Switch 
+                     trackColor={{ false: "#767577", true: "#81b0ff" }}
+                    thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                        ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+					
+				/>
+			 </View>
+             
              </View>
              <View style={styles._rectangle2}>
                  <Text style={styles._txt2}>Appearance</Text>
-                 <View style={styles.iconarrow1}>
-                     <Icon2 name="keyboard-arrow-right" size={30} color="white" />
-                 </View>
+                 
  
  
              </View>
@@ -54,7 +67,30 @@ import React, { Component } from 'react';
                  </View>
              </View>
  
-          
+             <View style={styles.dropdown}>
+                 <View style={styles.navicircle}></View>
+                 <View>
+                     <View style={styles.icondown}>
+                         <Icon1 name="angle-dobule-down" size={18} color="white" />
+                     </View>
+                     <View style={styles.iconbullet}>
+                         <Icon name="format-list-bulleted" size={22} color="white" />
+                     </View>
+                     <View style={styles.icondate}>
+                         <Icon1 name="date" size={20} color="white" />
+                     </View>
+                     <View style={styles.iconset}>
+                         <Icon3 name="settings" size={20} color="white" />
+                     </View>
+                     <View style={styles.iconlist}>
+                         <Icon2 name="list-alt" size={23} color="white" />
+                     </View>
+ 
+ 
+                 </View>
+ 
+ 
+             </View>
  
  
  
@@ -99,6 +135,8 @@ import React, { Component } from 'react';
  }
  
  const styles = StyleSheet.create({
+   
+	
   searchbar: {
 		position: 'absolute',
 		top:-60,
@@ -109,6 +147,14 @@ import React, { Component } from 'react';
 		width: '80%',
 		
 	   },
+	   button: {
+		
+			flex: 1,
+			alignItems: "center",
+			justifyContent: "center"
+		  
+	   },
+
      container: {
          flex: 1,
          paddingTop: 100,
