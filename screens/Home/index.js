@@ -26,7 +26,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon1 from 'react-native-vector-icons/FontAwesome5';
 import Icon2 from 'react-native-vector-icons/Feather';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import { Searchbar } from 'react-native-paper';
 import {
 	useFonts,
 		Roboto_400Regular
@@ -34,7 +34,7 @@ import {
  
  
  
- const App = () => {
+ const App = (props) => {
    return (
 	 <View style={styles.container}>
 		 
@@ -44,14 +44,7 @@ import {
 	  
 	   {/* Search */}
 		<View>
-			<View style={styles.searchWrapper}>
-				<Text style={styles.searchText}>Search</Text>
-				<View style={styles.iconsearch}>
-				<Icon2 name="search" size={15} color="white" />
-				</View>
-				
-
-			</View>
+		<Searchbar style={styles.searchbar}  ></Searchbar>
 
 		</View>
 		<Text style={styles._category}>CATEGORY</Text>
@@ -104,33 +97,38 @@ import {
 			
 			
 		</View>
-		<View style={styles._circle1}>
-            <View style ={styles.iconwork1}>
+		<TouchableOpacity style={styles._circle1} onPress={()=>{props.navigation.navigate("Work")}}>
+		<View style ={styles.iconwork1}>
 			<Icon name="work" size={35} color="white"  />
-			</View></View>
-		<View style={styles._circle2}>
-            <View style ={styles.icongym1}>
+			</View>
+		</TouchableOpacity>
+		
+		<TouchableOpacity style={styles._circle2} onPress={()=>{props.navigation.navigate("Gym")}}>
+		<View style ={styles.icongym1}>
 			<Icon1 name="dumbbell" size={35} color="white" />
-			</View></View>
-		
-		
-		<View style={styles._circle4}>
-        <View style ={styles.iconnotes1}>
+			</View>
+		</TouchableOpacity>
+
+		<TouchableOpacity style={styles._circle4} onPress={()=>{props.navigation.navigate("Studies")}}>
+		<View style ={styles.iconnotes1}>
 			<Icon3 name="note-text" size={35} color="white" />
 			</View>
-        </View>
-		<View style={styles._circle5}>
-        <View style={styles.iconbook1}>
+		</TouchableOpacity>
+			
+		<TouchableOpacity style={styles._circle5} onPress={()=>{props.navigation.navigate("Studies")}}>
+		<View style={styles.iconbook1}>
 			<Icon2 name="book-open" size={35} color="white" />
 			</View>
-        </View>
+		</TouchableOpacity>
+		
+		
+		
 
-		<View>
+	
 			
 			
 			
-			
-		</View>
+
 		
 
 		
@@ -229,6 +227,16 @@ import {
 		fontSize: 16,
 		color: "white",
 	},
+	searchbar: {
+		position: 'absolute',
+		top:-60,
+		left: 41,
+		borderRadius: 30,
+		backgroundColor: "rgba(98, 90, 90, 1)",
+		height: 38,
+		width: '80%',
+		
+	   },
 		
 		
 		
@@ -346,6 +354,7 @@ import {
 		backgroundColor: "rgba(98, 90, 90, 1)",
 		left: 45,
 		bottom: 5,
+		zIndex: 10
 		
 		
 

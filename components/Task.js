@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     marginBottom: 1,
     
     
+    
   },
   itemLeft: {
     flexDirection: 'row',

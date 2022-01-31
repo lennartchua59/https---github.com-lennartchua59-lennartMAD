@@ -28,7 +28,7 @@ import {
  
  
  
- export default function App() {
+ export default function App(props) {
         const [task, setTask] = useState();
         const [taskItems, setTaskItems] = useState([]);
        
@@ -68,29 +68,11 @@ import {
 
      </View>
 	 {/*Icon list*/}
-	 <View style={styles.dropdown}>
-	 <View style={styles.navicircle}></View>
-	 <View>
-		<View style={styles.icondown}>
-		<Icon1 name="angle-dobule-down" size={20} color="white"/>	
-		</View>
-		<View style ={styles.iconbullet}>
-		<Icon name="format-list-bulleted" size={22} color="white" />
-		</View>
-		<View style ={styles.icondate}>
-		<Icon1 name="date" size={20} color="white" />
-		</View>
-		<View style={styles.iconset}>
-		<Icon3 name="settings" size={20} color="white"/>	
-		</View>
-		<View style ={styles.iconlist}>
-		<Icon2 name="list-alt"size={22} color="white"/>
-		</View>
+	 
 		
-		
-	</View>
 
-	 </View>
+
+	
 	
 
 

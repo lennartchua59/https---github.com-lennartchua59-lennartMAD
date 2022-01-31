@@ -9,8 +9,12 @@
  */
 
  import React, {useState} from 'react';
- import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
- import Task from './components/Task';
+ import {KeyboardAvoidingView, StyleSheet, Text, View, TextInput, SafeAreaView, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
+ import Task from '../components/Task';
+ import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
+ 
+
+
  
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -24,10 +28,12 @@ import {
 	useFonts,
 		Roboto_400Regular
 	} from "@expo-google-fonts/dev";
+import { Searchbar } from 'react-native-paper';
  
- export default function App() {
+ export default function App(props) {
  const [task, setTask] = useState();
  const [taskItems, setTaskItems] = useState([]);
+ 
 
  const handleAddTask = () => {
    Keyboard.dismiss();
@@ -41,31 +47,39 @@ import {
    setTaskItems(itemsCopy)
  }
  
+
+ 
+	
+ 
    return (
+	   
 	 <View style={styles.container}>
 	  
 		{/* app name */}
-	   <Text style={styles.welcome}>ReminDING</Text>
+		
+		
+		<TouchableOpacity   onPress={()=>{props.navigation.navigate("Home")}}>
+		<Text style={styles.welcome}>ReminDING</Text>
+		</TouchableOpacity>
 	   
-
-	    {/* Search */}
-		<View>
-			<View style={styles.searchWrapper}>
-				<Text style={styles.searchText}>Search</Text>
-				<View style={styles.iconsearch}>
-				<Icon3 name="search" size={15} color="white" /></View>
-				
-
-			</View>
-
-		</View>
+	<View>
+	
+	<Searchbar style={styles.searchbar} ></Searchbar>
+	   </View>
+	  
+	   	{/* Drop down menu */}
+	
+		 
+		   
+	   
+		
 		
 		<Text style={styles._category}>NOTES</Text>
 		<View style={styles._Line1}></View>
-		
-
-
-
+	
+	
+	
+	
 		{/*BODY */}
 		<ScrollView
         contentContainerStyle={{
@@ -74,16 +88,18 @@ import {
         keyboardShouldPersistTaps='handled'
       >
 
+		  
       {/* Today's Tasks */}
       <View style={styles.tasksWrapper}>
-      
+     
+   
         <View style={styles.items}>
           {/* This is where the tasks will go! */}
           {
             taskItems.map((item, index) => {
               return (
-                <TouchableOpacity key={index}  onPress={() => completeTask(index)}>
-                  <Task text={item} /> 
+                <TouchableOpacity  key={index} onPress={() => completeTask(index)}>
+                  <Task  text={item} /> 
                 </TouchableOpacity>
               )
             })
@@ -94,8 +110,12 @@ import {
       </ScrollView>
 		
 	
+	
 		
-		
+	 
+	  
+	 
+	
 
 
 		{/*icons for reminders*/}
@@ -103,81 +123,57 @@ import {
 		
 		
 
-		
-	     
+	
 
 
-
-		{/* Drop down menu */}
-	   <View style={styles.dropdown}>
-	   <View style={styles.navicircle}></View>
-	   <View>
-		<View style={styles.icondown}>
-		<Icon1 name="angle-dobule-down" size={20} color="white"/>	
-		</View>
-		<View style ={styles.iconbullet}>
-		<Icon name="format-list-bulleted" size={22} color="white" />
-		</View>
-		<View style ={styles.icondate}>
-		<Icon1 name="date" size={20} color="white" />
-		</View>
-		<View style={styles.iconset}>
-		<Icon3 name="settings" size={20} color="white"/>	
-		</View>
-		<View style ={styles.iconlist}>
-		<Icon2 name="list-alt"size={22} color="white"/>
-		
-		</View>
-		
-		
-	</View>
-	   </View>
-	   
+	
 	   
 	   {/* Navigation */}
-        <View style={styles.footer}>
+	   <View style={styles.footer}>
 			
 			
-		</View>
-		<View style={styles._circle1}>
-		<View style ={styles.iconwork1}>
-			<Icon2 name="work" size={25} color="white"  />
 			</View>
-		</View>
-		<View style={styles._circle2}>
-		<View style ={styles.icongym1}>
-			<Icon4 name="dumbbell" size={20} color="white" />
-			</View>
-		</View>
-		<KeyboardAvoidingView 
-        
-        style={styles.writeTaskWrapper}
-      >
-        <TextInput style={styles.input} placeholder={'\t\t\tType Reminder'} placeholderTextColor="grey"  value={task} onChangeText={text => setTask(text)} />
-        <TouchableOpacity onPress={() => handleAddTask()}>
-          <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
-          </View>
-        </TouchableOpacity>
-		</KeyboardAvoidingView>
+			<TouchableOpacity style={styles._circle1} onPress={()=>{props.navigation.navigate("Work")}}>
+			<View style ={styles.iconwork1}>
+				<Icon2 name="work" size={25} color="white"  />	
+				</View>
+			</TouchableOpacity>
+			
+			<TouchableOpacity style={styles._circle2} onPress={()=>{props.navigation.navigate("Gym")}}>
+			<View style ={styles.icongym1}>
+				<Icon4 name="dumbbell" size={20} color="white" />
+				</View>
+			</TouchableOpacity>
+			<KeyboardAvoidingView 
+			
+			style={styles.writeTaskWrapper}
+		  >
+			<TextInput style={styles.input} placeholder={'\t\t\tType Reminder'} placeholderTextColor="grey" value={task} onChangeText={text => setTask(text)} />
+			<TouchableOpacity onPress={() => handleAddTask()}>
+			  <View style={styles.addWrapper}>
+				<Text style={styles.addText}>+</Text>
+			  </View>
+			</TouchableOpacity>
+			</KeyboardAvoidingView>
+			<TouchableOpacity style={styles._circle5} onPress={()=>{props.navigation.navigate("Studies")}}>
+			<View style={styles.iconbook1}>
+				<Icon3 name="book-open" size={22} color="white" />
+				</View>
+			</TouchableOpacity>
+			
+			
 		
-		<View style={styles._circle4}>
-		<View style ={styles.iconnotes1}>
-			<Icon name="note-text" size={25} color="white" />
+			<TouchableOpacity style={styles._circle4} onPress={()=>{props.navigation.navigate("Notes")}}>
+			<View style ={styles.iconnotes1}>
+				<Icon name="note-text" size={25} color="white" />
+				</View>
+			</TouchableOpacity>
+	
+			<View>
+				
+			
+				
 			</View>
-		</View>
-		<View style={styles._circle5}>
-		<View style={styles.iconbook1}>
-			<Icon3 name="book-open" size={22} color="white" />
-			</View>
-		</View>
-
-		<View>
-			
-			
-			
-			
-		</View>
 
 		
     {/* Write a task */}
@@ -198,9 +194,6 @@ import {
 
 	}
 
-	 
-
-	 
 
 	
    
@@ -212,10 +205,62 @@ import {
 	 paddingTop: 100,
 	 backgroundColor: 'black',
    },
+   
+   searchbar: {
+	position: 'absolute',
+	top:-60,
+	left: 41,
+	borderRadius: 30,
+	backgroundColor: "rgba(98, 90, 90, 1)",
+	height: 38,
+    width: '80%',
+	
+   },
+
+   menuprov: {
+	
+	backgroundColor: "grey", 
+	width: 30,
+	bottom: 300,
+	
+	
+	
+   },
+
+  menuContent: {
+
+	backgroundColor: 'grey',
+	width: 32,
+	top:30,
+	left: 3
+	
+  },
+  icondrop: {
+
+	  left:-2,
+	  top:100
+	  
+  },
+  optionsstyle: {
+
+	width: 30,
+	backgroundColor: "grey",
+ 	
+	
+   
+
+	
+  },
+
+
+ 
    tasksWrapper: {
-    paddingTop: 20,
-    paddingHorizontal: 40,
-	left: 10
+	paddingtop: 40,
+ 	paddingHorizontal: 20,
+	left: 40,
+	width: 300
+	
+	
   },
   items: {
     marginTop: 10,
@@ -261,7 +306,7 @@ import {
  	 
 	},
    welcome: {
-	 top: 0,
+	 top: -100,
 	 flexDirection: 'row',
 	 position: 'absolute',
 	 fontSize: 30,
@@ -271,17 +316,7 @@ import {
 	 height: 45,
 	 color: 'white',
    },
-   dropdown : {
-	position: "absolute",
-	width: 30,
-	height:150,
-	borderRadius: 20,
-	opacity: 1,
-	left: 9,
-	top: 25,
-	bottom: "auto",
-	backgroundColor: "rgba(41, 37, 37, 1)",
-   },
+  
    
    searchWrapper:{
 	position: "absolute",
@@ -324,10 +359,11 @@ searchText: {
 	 
  },
  _Line1: {
+	 position:"absolute",
 	height :1,
  	width:40,
 	left: 55,
-	top: 10,
+	top: 110,
  	backgroundColor: 'grey'
  },
 
@@ -351,6 +387,7 @@ searchText: {
 		backgroundColor: "rgba(98, 90, 90, 1)",
 		left: 45,
 		bottom: 5,
+		zIndex:10
 		
 		
 
@@ -363,18 +400,10 @@ searchText: {
 		backgroundColor: "rgba(98, 90, 90, 1)",
 		left: 95,
 		bottom: 45,
+		zIndex:10
 	},
 
-	_circle3: {
-		position: "absolute",
-		width: 70,
-		height: 70,
-		borderRadius:  1000,
-		backgroundColor: "rgba(98, 90, 90, 1)",
-		left: 155,
-		bottom: 45,
 
-	},
 	_circle4: {
 		position: "absolute",
 		width: 50,
@@ -383,6 +412,7 @@ searchText: {
 		backgroundColor: "rgba(98, 90, 90, 1)",
 		left: 292,
 		bottom: 5,
+		zIndex:10
 
 	},
 	_circle5: {
@@ -393,6 +423,7 @@ searchText: {
 		backgroundColor: "rgba(98, 90, 90, 1)",
 		left: 243,
 		bottom: 45,
+		zIndex:10
 
 	},
 	_plus: {
