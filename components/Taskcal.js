@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     
   },
   itemText: {
-    maxWidth: '80%',
+    maxWidth: '90%',
     color: "white",
     fontSize: 20
     },
