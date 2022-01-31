@@ -9,6 +9,7 @@ import WorkScreen from "./screens/Work"
 import GymScreen from "./screens/Gym"
 import StudiesScreen from "./screens/studies"
 import NotesScreen from "./screens/notes"
+import CalScreen from "./screens/calander"
 
 
 const Stack = createNativeStackNavigator();
@@ -22,6 +23,7 @@ function Navigation() {
         <Stack.Screen name="Gym" component={GymScreen}  options={{headerShown: false}}/>
         <Stack.Screen name="Studies" component={StudiesScreen}  options={{headerShown: false}}/>
         <Stack.Screen name="Notes" component={NotesScreen}  options={{headerShown: false}}/>
+        <Stack.Screen name="Cal" component={CalScreen}  options={{headerShown: false}}/>
        
       </Stack.Navigator>
     

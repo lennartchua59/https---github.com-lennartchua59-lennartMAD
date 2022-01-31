@@ -40,7 +40,9 @@ import {
 		 
 	
 
-	   <Text style={styles.welcome}>ReminDING</Text>
+		 <TouchableOpacity   onPress={()=>{props.navigation.navigate("Cal")}}>
+		<Text style={styles.welcome}>ReminDING</Text>
+		</TouchableOpacity>
 	  
 	   {/* Search */}
 		<View>
@@ -159,7 +161,7 @@ import {
 	 backgroundColor: 'black',
    },
    welcome: {
-	 top: 0,
+	 top: -100,
 	 flexDirection: 'row',
 	 position: 'absolute',
 	 fontSize: 30,

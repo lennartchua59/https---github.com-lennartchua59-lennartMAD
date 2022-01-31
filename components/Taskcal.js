@@ -6,9 +6,8 @@ const Task = (props) => {
   return (
     <View style={styles.item}>
       <View style={styles.itemLeft}>
-        <View style={styles.circle}></View>
+        <View style={styles.square}></View>
         <Text style={styles.itemText}>{props.text}</Text>
-        
       </View>
       
     </View>
@@ -17,51 +16,34 @@ const Task = (props) => {
 
 const styles = StyleSheet.create({
   item: {
-    
-    
-    
-   padding: 14,
+    backgroundColor: 'rgba(98, 90, 90, 1)',
+    padding: 15,
+    borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 1,
-    
-    
+    marginBottom: 20,
   },
   itemLeft: {
     flexDirection: 'row',
     alignItems: 'center',
-    flexWrap: 'wrap',
-    
+    flexWrap: 'wrap'
   },
-  circle: {
-    width: 12,
-    height: 12,
-    borderColor: 'grey',
-    borderWidth: 2,
+  square: {
+    width: 24,
+    height: 24,
+    backgroundColor: 'rgba(98, 90, 90, 1)',
+    opacity: 0,
     borderRadius: 5,
-
-    marginRight: 15,
+    marginRight: -10,
+    
   },
   itemText: {
     maxWidth: '80%',
-    color:"white"
-  },
-  circular: {
-    width: 12,
-    height: 12,
-    borderColor: 'grey',
-    borderWidth: 2,
-    borderRadius: 5,
-  },
-  line: {
-    height :2,
-    width: 250,
-    left: 0,
-    top: 20,
-    backgroundColor: 'rgba(74, 69, 69, 1)'
-  }
-  
+    color: "white",
+    fontSize: 20
+    },
+ 
 });
 
 export default Task;
