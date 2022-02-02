@@ -33,7 +33,9 @@
      return (
          <View style={styles.container}>
  
-             <Text style={styles.welcome}>ReminDING</Text>
+ <TouchableOpacity   onPress={()=>{props.navigation.navigate("Whome")}}>
+		<Text style={styles.welcome}>ReminDING</Text>
+		</TouchableOpacity>
 			 <TouchableOpacity
                     onPress={() => props.navigation.navigate('Wset')}
                     
@@ -51,18 +53,20 @@
              <View style={styles._rectangle}>
                  <Text style={styles._txt1}>Light</Text>
                  <TouchableOpacity
-                    onPress={() => props.navigation.navigate('Set')}
+                    
                     
 					
                 ><View style={styles.iconcheck1}>
-                <Icon name="checkbox-blank-circle-outline" size={40} color="black" />
-            </View>
-                </TouchableOpacity>
-             
+                    <Icon name="checkbox-marked-circle" size={40} color="black" />
                 
+            </View>
+                </TouchableOpacity >
+             
+                <TouchableOpacity onPress={() => props.navigation.navigate('App')}>
                  <View style={styles.iconcheck2}>
-                     <Icon name="checkbox-marked-circle" size={40} color="black" />
+                 <Icon name="checkbox-blank-circle-outline" size={40} color="black" />
                  </View>
+                 </TouchableOpacity>
                  <Text style={styles._txt3}>Dark</Text>
                  
              </View>
@@ -95,7 +99,7 @@
          backgroundColor: 'white',
      },
      welcome: {
-         top: 0,
+         top: -100,
          flexDirection: 'row',
          position: 'absolute',
          fontSize: 30,

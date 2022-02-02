@@ -19,11 +19,13 @@ import { KeyboardAvoidingView, StyleSheet, Text, View,
   return (
     <View style={styles.container}>
  
-             <Text style={styles.welcome}>ReminDING</Text>
+ <TouchableOpacity   onPress={()=>{props.navigation.navigate("Whome")}}>
+		<Text style={styles.welcome}>ReminDING</Text>
+		</TouchableOpacity>
  
              <View style={styles.iconarrow2}>
                  <TouchableOpacity
-                    onPress={() => props.navigation.navigate('WSet')}
+                    onPress={() => props.navigation.navigate('Wset')}
                     
 
                 ><Icon2 name="keyboard-arrow-left" size={30} color="black" />
@@ -124,7 +126,7 @@ const styles = StyleSheet.create({
 	backgroundColor: 'white',
 },
 welcome: {
-	top: 0,
+	top: -100,
 	flexDirection: 'row',
 	position: 'absolute',
 	fontSize: 30,

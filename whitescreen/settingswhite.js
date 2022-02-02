@@ -58,7 +58,7 @@ import Icon4 from 'react-native-vector-icons/Fontisto';
 
          
         
-         <TouchableOpacity style={styles._rectangle2}  onPress={()=>{props.navigation.navigate("App")}}>
+         <TouchableOpacity style={styles._rectangle2}  onPress={()=>{props.navigation.navigate("Wapp")}}>
              <Text style={styles._txt2}>Appearance</Text>
                 <View style={styles.iconarrow1}>
                  <Icon name="keyboard-arrow-right" size={30} color="white" />
@@ -68,7 +68,7 @@ import Icon4 from 'react-native-vector-icons/Fontisto';
 
 
         
-         <TouchableOpacity style={styles._rectangle3} onPress={()=>{props.navigation.navigate("Feed")}}>
+         <TouchableOpacity style={styles._rectangle3} onPress={()=>{props.navigation.navigate("Wfeed")}}>
         <View style ={styles.iconarrow2}>
           <Text style={styles._txt3}>Feedback</Text>
             <Icon name="keyboard-arrow-right" size={30} color="white"  />
@@ -89,9 +89,9 @@ import Icon4 from 'react-native-vector-icons/Fontisto';
 		<Icon3 name="chevron-double-down" size={35} color="black" />
         </MenuTrigger>
         <MenuOptions optionsContainerStyle={styles.optionsstyle}>
-          <TouchableOpacity  onPress={()=>{props.navigation.navigate("All")}}><Icon name="format-list-bulleted" size={25} color="black"/></TouchableOpacity>  
-          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Cal")}}><Icon4 name="date" size={25} color="black" /></TouchableOpacity> 
-          <TouchableOpacity onPress={()=>{props.navigation.navigate("Set")}}><Icon2 name="settings" size={25} color="black"/></TouchableOpacity>
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Wall")}}><Icon name="format-list-bulleted" size={25} color="black"/></TouchableOpacity>  
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Wcal")}}><Icon4 name="date" size={25} color="black" /></TouchableOpacity> 
+          <TouchableOpacity onPress={()=>{props.navigation.navigate("Wset")}}><Icon2 name="settings" size={25} color="black"/></TouchableOpacity>
         </MenuOptions>
       </Menu>
 	</MenuProvider>
@@ -102,25 +102,25 @@ import Icon4 from 'react-native-vector-icons/Fontisto';
 			
 			
             </View>
-            <TouchableOpacity style={styles._circle1} onPress={()=>{props.navigation.navigate("Work")}}>
+            <TouchableOpacity style={styles._circle1} onPress={()=>{props.navigation.navigate("Wwork")}}>
             <View style ={styles.iconwork1}>
                 <Icon name="work" size={35} color="white"  />
                 </View>
             </TouchableOpacity>
             
-            <TouchableOpacity style={styles._circle2} onPress={()=>{props.navigation.navigate("Gym")}}>
+            <TouchableOpacity style={styles._circle2} onPress={()=>{props.navigation.navigate("Wgym")}}>
             <View style ={styles.icongym1}>
                 <Icon1 name="dumbbell" size={35} color="white" />
                 </View>
             </TouchableOpacity>
     
-            <TouchableOpacity style={styles._circle4} onPress={()=>{props.navigation.navigate("Studies")}}>
+            <TouchableOpacity style={styles._circle4} onPress={()=>{props.navigation.navigate("Wstudies")}}>
             <View style ={styles.iconnotes1}>
                 <Icon3 name="note-text" size={35} color="white" />
                 </View>
             </TouchableOpacity>
                 
-            <TouchableOpacity style={styles._circle5} onPress={()=>{props.navigation.navigate("Studies")}}>
+            <TouchableOpacity style={styles._circle5} onPress={()=>{props.navigation.navigate("Wnotes")}}>
             <View style={styles.iconbook1}>
                 <Icon2 name="book-open" size={35} color="white" />
                 </View>
@@ -193,7 +193,7 @@ import Icon4 from 'react-native-vector-icons/Fontisto';
     
         right: 90,
         width: 30,
-        top:1100,
+        top:1140,
         left: 3,
         height:50,
         
@@ -218,7 +218,7 @@ import Icon4 from 'react-native-vector-icons/Fontisto';
       optionsstyle: {
         top:-200,
         width: 30,
-        backgroundColor: "black",
+        backgroundColor: "white",
         margintop:-200,
         height:250,
         

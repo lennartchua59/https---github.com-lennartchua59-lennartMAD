@@ -42,7 +42,7 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
 	 <View style={styles.container}>
 	  
  
-	  <TouchableOpacity   onPress={()=>{props.navigation.navigate("Home")}}>
+	  <TouchableOpacity   onPress={()=>{props.navigation.navigate("Whome")}}>
 		<Text style={styles.welcome}>ReminDING</Text>
 		</TouchableOpacity>
 	   
@@ -111,9 +111,9 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
 		<Icon name="chevron-double-down" size={35} color="black" />
         </MenuTrigger>
         <MenuOptions optionsContainerStyle={styles.optionsstyle}>
-          <TouchableOpacity  onPress={()=>{props.navigation.navigate("All")}}><Icon name="format-list-bulleted" size={25} color="black"/></TouchableOpacity>  
-          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Cal")}}><Icon1 name="date" size={25} color="black" /></TouchableOpacity> 
-          <TouchableOpacity onPress={()=>{props.navigation.navigate("Set")}}><Icon3 name="settings" size={25} color="black"/></TouchableOpacity>
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Wall")}}><Icon name="format-list-bulleted" size={25} color="black"/></TouchableOpacity>  
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Wcal")}}><Icon1 name="date" size={25} color="black" /></TouchableOpacity> 
+          <TouchableOpacity onPress={()=>{props.navigation.navigate("Wset")}}><Icon3 name="settings" size={25} color="black"/></TouchableOpacity>
         </MenuOptions>
       </Menu>
 	</MenuProvider>
@@ -124,13 +124,13 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
 			
 			
 			</View>
-			<TouchableOpacity style={styles._circle1} onPress={()=>{props.navigation.navigate("Work")}}>
+			<TouchableOpacity style={styles._circle1} onPress={()=>{props.navigation.navigate("Wwork")}}>
 			<View style ={styles.iconwork1}>
 				<Icon2 name="work" size={25} color="white"  />	
 				</View>
 			</TouchableOpacity>
 			
-			<TouchableOpacity style={styles._circle2} onPress={()=>{props.navigation.navigate("Gym")}}>
+			<TouchableOpacity style={styles._circle2} onPress={()=>{props.navigation.navigate("Wgym")}}>
 			<View style ={styles.icongym1}>
 				<Icon4 name="dumbbell" size={20} color="white" />
 				</View>
@@ -146,7 +146,7 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
 			  </View>
 			</TouchableOpacity>
 			</KeyboardAvoidingView>
-			<TouchableOpacity style={styles._circle5} onPress={()=>{props.navigation.navigate("Studies")}}>
+			<TouchableOpacity style={styles._circle5} onPress={()=>{props.navigation.navigate("Wstudies")}}>
 			<View style={styles.iconbook1}>
 				<Icon3 name="book-open" size={22} color="white" />
 				</View>
@@ -154,7 +154,7 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
 			
 			
 		
-			<TouchableOpacity style={styles._circle4} onPress={()=>{props.navigation.navigate("Notes")}}>
+			<TouchableOpacity style={styles._circle4} onPress={()=>{props.navigation.navigate("Wnotes")}}>
 			<View style ={styles.iconnotes1}>
 				<Icon name="note-text" size={25} color="white" />
 				</View>

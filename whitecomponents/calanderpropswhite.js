@@ -50,7 +50,7 @@ import React, { Component } from 'react';
                         minDate={minDate}
                         maxDate={maxDate}
                         todayBackgroundColor="#a00828"
-                        selectedDayColor="black"
+                        selectedDayColor="#a00828"
                         selectedDayTextColor="black"
                         onDateChange={this.onDateChange}
                         textStyle={{
@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
     _rectangle1:{
         backgroundColor: "white",
         justifyContent:'center',
-       top: 30
+       top: -10,
+       height:200
     },
     
   });

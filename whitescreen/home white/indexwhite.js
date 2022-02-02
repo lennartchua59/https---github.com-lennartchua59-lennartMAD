@@ -40,7 +40,7 @@ import {
 		 
 	
 
-		 <TouchableOpacity   onPress={()=>{props.navigation.navigate("Cal")}}>
+		 <TouchableOpacity   onPress={()=>{props.navigation.navigate("Whome")}}>
 		<Text style={styles.welcome}>ReminDING</Text>
 		</TouchableOpacity>
 	  
@@ -99,25 +99,25 @@ import {
 			
 			
 		</View>
-		<TouchableOpacity style={styles._circle1} onPress={()=>{props.navigation.navigate("Work")}}>
+		<TouchableOpacity style={styles._circle1} onPress={()=>{props.navigation.navigate("Wwork")}}>
 		<View style ={styles.iconwork1}>
 			<Icon name="work" size={35} color="white"  />
 			</View>
 		</TouchableOpacity>
 		
-		<TouchableOpacity style={styles._circle2} onPress={()=>{props.navigation.navigate("Gym")}}>
+		<TouchableOpacity style={styles._circle2} onPress={()=>{props.navigation.navigate("Wgym")}}>
 		<View style ={styles.icongym1}>
 			<Icon1 name="dumbbell" size={35} color="white" />
 			</View>
 		</TouchableOpacity>
 
-		<TouchableOpacity style={styles._circle4} onPress={()=>{props.navigation.navigate("Studies")}}>
+		<TouchableOpacity style={styles._circle4} onPress={()=>{props.navigation.navigate("Wstudies")}}>
 		<View style ={styles.iconnotes1}>
 			<Icon3 name="note-text" size={35} color="white" />
 			</View>
 		</TouchableOpacity>
 			
-		<TouchableOpacity style={styles._circle5} onPress={()=>{props.navigation.navigate("Studies")}}>
+		<TouchableOpacity style={styles._circle5} onPress={()=>{props.navigation.navigate("Wnotes")}}>
 		<View style={styles.iconbook1}>
 			<Icon2 name="book-open" size={35} color="white" />
 			</View>
