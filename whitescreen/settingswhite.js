@@ -32,7 +32,7 @@ import Icon4 from 'react-native-vector-icons/Fontisto';
      return (
          <View style={styles.container}>
  
- <TouchableOpacity   onPress={()=>{props.navigation.navigate("Home")}}>
+ <TouchableOpacity   onPress={()=>{props.navigation.navigate("Whome")}}>
 		<Text style={styles.welcome}>ReminDING</Text>
 		</TouchableOpacity>
              {/* Search */}
