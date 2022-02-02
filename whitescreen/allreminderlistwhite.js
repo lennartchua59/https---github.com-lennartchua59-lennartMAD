@@ -10,10 +10,10 @@
 
  import React, {useState} from 'react';
 import { SafeAreaView,KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
-import Task from '../components/Taskall';
+
 import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-
+import Task from "../whitecomponents/Taskallwhite";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon1 from 'react-native-vector-icons/Fontisto';
 import Icon2 from "react-native-vector-icons/MaterialIcons";
@@ -108,12 +108,12 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
 	  <MenuProvider style={styles.menuprov}>
       <Menu style={styles.menuContent} >
         <MenuTrigger style={styles.icondrop}>
-		<Icon name="chevron-double-down" size={35} color="white" />
+		<Icon name="chevron-double-down" size={35} color="black" />
         </MenuTrigger>
         <MenuOptions optionsContainerStyle={styles.optionsstyle}>
-          <TouchableOpacity  onPress={()=>{props.navigation.navigate("All")}}><Icon name="format-list-bulleted" size={25} color="white"/></TouchableOpacity>  
-          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Cal")}}><Icon1 name="date" size={25} color="white" /></TouchableOpacity> 
-          <TouchableOpacity onPress={()=>{props.navigation.navigate("Set")}}><Icon3 name="settings" size={25} color="white"/></TouchableOpacity>
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("All")}}><Icon name="format-list-bulleted" size={25} color="black"/></TouchableOpacity>  
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Cal")}}><Icon1 name="date" size={25} color="black" /></TouchableOpacity> 
+          <TouchableOpacity onPress={()=>{props.navigation.navigate("Set")}}><Icon3 name="settings" size={25} color="black"/></TouchableOpacity>
         </MenuOptions>
       </Menu>
 	</MenuProvider>
@@ -185,7 +185,7 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
    container: {
 	 flex: 1,
 	 paddingTop: 100,
-	 backgroundColor: 'black',
+	 backgroundColor: 'white',
    },
    menuprov: {
 	
@@ -231,7 +231,7 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
   optionsstyle: {
 	top:-200,
 	width: 30,
-	backgroundColor: "black",
+	backgroundColor: "white",
 	margintop:-200,
 	height:200,
 	
@@ -314,7 +314,7 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
 	 textAlign: 'center',
 	 width: '100%',
 	 height: 45,
-	 color: 'white',
+	 color: 'black',
    },
   
    

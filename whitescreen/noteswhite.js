@@ -10,7 +10,7 @@
 
  import React, {useState} from 'react';
  import {KeyboardAvoidingView, StyleSheet, Text, View, TextInput, SafeAreaView, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
- import Task from '../components/Task';
+ import Task from '../whitecomponents/Taskwhite';
  import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 // import Drop from './components/dropdown';
  //import Search from './components/searchbar';
@@ -117,12 +117,12 @@ import { Searchbar } from 'react-native-paper';
 	<MenuProvider style={styles.menuprov}>
       <Menu style={styles.menuContent} >
         <MenuTrigger style={styles.icondrop}>
-		<Icon name="chevron-double-down" size={35} color="white" />
+		<Icon name="chevron-double-down" size={35} color="black" />
         </MenuTrigger>
         <MenuOptions optionsContainerStyle={styles.optionsstyle}>
-          <TouchableOpacity  onPress={()=>{props.navigation.navigate("All")}}><Icon name="format-list-bulleted" size={25} color="white"/></TouchableOpacity>  
-          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Cal")}}><Icon1 name="date" size={25} color="white" /></TouchableOpacity> 
-          <TouchableOpacity onPress={()=>{props.navigation.navigate("Set")}}><Icon3 name="settings" size={25} color="white"/></TouchableOpacity>
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("All")}}><Icon name="format-list-bulleted" size={25} color="black"/></TouchableOpacity>  
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Cal")}}><Icon1 name="date" size={25} color="black" /></TouchableOpacity> 
+          <TouchableOpacity onPress={()=>{props.navigation.navigate("Set")}}><Icon3 name="settings" size={25} color="black"/></TouchableOpacity>
         </MenuOptions>
       </Menu>
 	</MenuProvider>
@@ -217,7 +217,7 @@ import { Searchbar } from 'react-native-paper';
    container: {
 	 flex: 1,
 	 paddingTop: 100,
-	 backgroundColor: 'black',
+	 backgroundColor: 'white',
    },
    
    searchbar: {
@@ -272,7 +272,7 @@ import { Searchbar } from 'react-native-paper';
   optionsstyle: {
 	top:-200,
 	width: 30,
-	backgroundColor: "black",
+	backgroundColor: "white",
 	margintop:-200,
 	height:500,
 	
@@ -354,7 +354,7 @@ import { Searchbar } from 'react-native-paper';
 	 textAlign: 'center',
 	 width: '100%',
 	 height: 45,
-	 color: 'white',
+	 color: 'black',
    },
   
    
@@ -397,7 +397,7 @@ searchText: {
 		alignItems: "center",
 	
 	 fontSize: 16,
-	 color: "white",
+	 color: "black",
 	 
 	 
 	 

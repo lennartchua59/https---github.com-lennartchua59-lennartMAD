@@ -50,11 +50,11 @@ import React, { Component } from 'react';
                         minDate={minDate}
                         maxDate={maxDate}
                         todayBackgroundColor="#a00828"
-                        selectedDayColor="#a00828"
-                        selectedDayTextColor="white"
+                        selectedDayColor="black"
+                        selectedDayTextColor="black"
                         onDateChange={this.onDateChange}
                         textStyle={{
-                            color: 'white',
+                            color: 'black',
                           }}
                           scaleFactor={450}
 
@@ -78,10 +78,9 @@ import React, { Component } from 'react';
 
 const styles = StyleSheet.create({
     _rectangle1:{
-        backgroundColor: "black",
+        backgroundColor: "white",
         justifyContent:'center',
-       top: -10,
-       height:200
+       top: 30
     },
     
   });

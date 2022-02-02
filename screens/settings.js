@@ -4,124 +4,130 @@ import React, {  useState } from 'react';
      StyleSheet,
  
      Text,
+	 TouchableOpacity,
  
-     View
+     View,Switch, Appearance,colorScheme
  } from 'react-native';
- import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
- import Icon1 from 'react-native-vector-icons/Fontisto';
- import Icon2 from "react-native-vector-icons/MaterialIcons";
- import Icon3 from "react-native-vector-icons/Feather";
- import Icon4 from 'react-native-vector-icons/FontAwesome5';
- import Icon6 from 'react-native-vector-icons/FontAwesome';
+ import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
+ import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon1 from 'react-native-vector-icons/FontAwesome5';
+import Icon2 from 'react-native-vector-icons/Feather';
+import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon4 from 'react-native-vector-icons/Fontisto';
 
- 	import CustomSwitch from './components/customswitch';
+ 	
    import { Searchbar } from 'react-native-paper';
   
-   import { Switch } from 'react-native-switch';
  
- const Settings = () => {
+ 
+   export default function settings(props) {
     const [isEnabled, setIsEnabled] = useState(false);
-	
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
- 
-       
+  const [isEnabled2, setIsEnabled2] = useState(false);
+  const toggleSwitch2 = () => setIsEnabled2(previousState => !previousState);
+       const[theme, setTheme]= useState(Appearance.getColorScheme());
+	   Appearance.addChangeListener((scheme)=>{
+		   setTheme(scheme.colorScheme);
+	   })
      return (
          <View style={styles.container}>
  
-             <Text style={styles.welcome}>ReminDING</Text>
+ <TouchableOpacity   onPress={()=>{props.navigation.navigate("Home")}}>
+		<Text style={styles.welcome}>ReminDING</Text>
+		</TouchableOpacity>
              {/* Search */}
              <View>
 		<Searchbar style={styles.searchbar} ></Searchbar>
 
 		</View>
              
-		
- 
- 
- 
-             <View style={styles._rectangle}>
+		<View style={styles.box}>
+    <View style={styles._rectangle}>
 				 
-             <Text style={styles._txt1}>Allow notifications</Text>
-			 <View styles={styles.button}>
-			 <Switch 
-                     trackColor={{ false: "#767577", true: "#81b0ff" }}
-                    thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-                        ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch}
-                    value={isEnabled}
-					
-				/>
-			 </View>
+         <Text style={styles._txt1}>Allow notifications</Text>
+   <View style={styles._switch}>
+   <Switch
+    trackColor={{ false: "#ffffff", true: "#ffffff" }}
+    thumbColor={isEnabled ? colorScheme == 'dark' : colorScheme == 'light'}
+    ios_backgroundColor="#3e3e3e"
+    onValueChange={toggleSwitch}
+    value={isEnabled}
+  />
+  </View>
+  </View>
+
+         
+        
+         <TouchableOpacity style={styles._rectangle2}  onPress={()=>{props.navigation.navigate("App")}}>
+             <Text style={styles._txt2}>Appearance</Text>
+                <View style={styles.iconarrow1}>
+                 <Icon name="keyboard-arrow-right" size={30} color="white" />
+             </View>
+            </TouchableOpacity>
+
+
+
+        
+         <TouchableOpacity style={styles._rectangle3} onPress={()=>{props.navigation.navigate("Feed")}}>
+        <View style ={styles.iconarrow2}>
+          <Text style={styles._txt3}>Feedback</Text>
+            <Icon name="keyboard-arrow-right" size={30} color="white"  />
+            </View>
+        </TouchableOpacity>
+    </View>
+ 
+
+ 
+ 
              
-             </View>
-             <View style={styles._rectangle2}>
-                 <Text style={styles._txt2}>Appearance</Text>
-                 
+            
+ 
+             {/* Drop down menu */}
+ <MenuProvider style={styles.menuprov}>
+      <Menu style={styles.menuContent} >
+        <MenuTrigger style={styles.icondrop}>
+		<Icon3 name="chevron-double-down" size={35} color="white" />
+        </MenuTrigger>
+        <MenuOptions optionsContainerStyle={styles.optionsstyle}>
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("All")}}><Icon name="format-list-bulleted" size={25} color="white"/></TouchableOpacity>  
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Cal")}}><Icon4 name="date" size={25} color="white" /></TouchableOpacity> 
+          <TouchableOpacity onPress={()=>{props.navigation.navigate("Set")}}><Icon2 name="settings" size={25} color="white"/></TouchableOpacity>
+        </MenuOptions>
+      </Menu>
+	</MenuProvider>
  
  
-             </View>
-             <View style={styles._rectangle3}>
-                 <Text style={styles._txt3}> Feedback </Text>
-                 <View style={styles.iconarrow2}>
-                     <Icon2 name="keyboard-arrow-right" size={30} color="white" />
-                 </View>
-             </View>
- 
-             <View style={styles.dropdown}>
-                 <View style={styles.navicircle}></View>
-                 <View>
-                     <View style={styles.icondown}>
-                         <Icon1 name="angle-dobule-down" size={18} color="white" />
-                     </View>
-                     <View style={styles.iconbullet}>
-                         <Icon name="format-list-bulleted" size={22} color="white" />
-                     </View>
-                     <View style={styles.icondate}>
-                         <Icon1 name="date" size={20} color="white" />
-                     </View>
-                     <View style={styles.iconset}>
-                         <Icon3 name="settings" size={20} color="white" />
-                     </View>
-                     <View style={styles.iconlist}>
-                         <Icon2 name="list-alt" size={23} color="white" />
-                     </View>
- 
- 
-                 </View>
- 
- 
-             </View>
- 
- 
- 
-             {/* Navigation */}
-             <View style={styles.footer}>
+  {/* Navigation */}
+  <View style={styles.footer}>
 			
 			
-		</View>
-		<View style={styles._circle1}>
+            </View>
+            <TouchableOpacity style={styles._circle1} onPress={()=>{props.navigation.navigate("Work")}}>
             <View style ={styles.iconwork1}>
-			<Icon2 name="work" size={35} color="white"  />
-			</View></View>
-		<View style={styles._circle2}>
+                <Icon name="work" size={35} color="white"  />
+                </View>
+            </TouchableOpacity>
+            
+            <TouchableOpacity style={styles._circle2} onPress={()=>{props.navigation.navigate("Gym")}}>
             <View style ={styles.icongym1}>
-			<Icon4 name="dumbbell" size={35} color="white" />
-			</View></View>
-		
-		
-		<View style={styles._circle4}>
-        <View style ={styles.iconnotes1}>
-			<Icon name="note-text" size={35} color="white" />
-			</View>
-        </View>
-		<View style={styles._circle5}>
-        <View style={styles.iconbook1}>
-			<Icon3 name="book-open" size={35} color="white" />
-			</View>
-        </View>
+                <Icon1 name="dumbbell" size={35} color="white" />
+                </View>
+            </TouchableOpacity>
+    
+            <TouchableOpacity style={styles._circle4} onPress={()=>{props.navigation.navigate("Studies")}}>
+            <View style ={styles.iconnotes1}>
+                <Icon3 name="note-text" size={35} color="white" />
+                </View>
+            </TouchableOpacity>
+                
+            <TouchableOpacity style={styles._circle5} onPress={()=>{props.navigation.navigate("Studies")}}>
+            <View style={styles.iconbook1}>
+                <Icon2 name="book-open" size={35} color="white" />
+                </View>
+            </TouchableOpacity>
+            
 
 		
- 
  
  
  
@@ -135,7 +141,28 @@ import React, {  useState } from 'react';
  }
  
  const styles = StyleSheet.create({
-   
+	welcome: {
+		top: -100,
+		flexDirection: 'row',
+		position: 'absolute',
+		fontSize: 30,
+		fontWeight: 'bold',
+		textAlign: 'center',
+		width: '100%',
+		height: 45,
+		color: 'white',
+	},
+  box: {
+    alignSelf: "flex-end",
+	  width: 350,
+	  height:390,
+	  borderRadius: 20,
+	  opacity: 1,
+	  left: -10,
+	  top: 20,
+	  bottom: "auto",
+	  
+  },
 	
   searchbar: {
 		position: 'absolute',
@@ -147,12 +174,62 @@ import React, {  useState } from 'react';
 		width: '80%',
 		
 	   },
-	   button: {
-		
-			flex: 1,
-			alignItems: "center",
-			justifyContent: "center"
-		  
+	   menuprov: {
+	
+        width: 40,
+        height: 40,
+        marginTop: -500,
+        top:-520,
+       
+        
+        
+        
+    
+        
+       },
+       
+    
+      menuContent: {
+    
+        right: 90,
+        width: 30,
+        top:1100,
+        left: 3,
+        height:50,
+        
+        
+        
+        
+        
+      },
+      icondrop: {
+          marignTop: -20,
+            bottom:-10,
+          left:4,
+          transform: [
+            {rotate: "180deg"}
+        ],
+        height:100,
+        
+         
+          
+      },
+      
+      optionsstyle: {
+        top:-200,
+        width: 30,
+        backgroundColor: "black",
+        margintop:-200,
+        height:250,
+        
+      },
+	   _switch: {
+		top:6,
+		right:6
+	   },
+	   _switch2: {
+		top:6,
+		right:2
 	   },
 
      container: {
@@ -175,12 +252,13 @@ import React, {  useState } from 'react';
          left: 282,
      },
      iconarrow1: {
-         top: 5,
+         top: 3,
          left: 290,
      },
      iconarrow2: {
          top: 5,
          left: 290,
+         zIndex: 10
      },
      icondown: {
          top: 10,
@@ -204,33 +282,16 @@ import React, {  useState } from 'react';
          top: 31,
          left: 5
      },
-     welcome: {
-         top: 0,
-         flexDirection: 'row',
-         position: 'absolute',
-         fontSize: 30,
-         fontWeight: 'bold',
-         textAlign: 'center',
-         width: '100%',
-         height: 45,
-         color: 'white',
-     },
-     footer: {
-         width: '100%',
-         alignItems: 'center',
-         justifyContent: 'center',
-         flexDirection: 'row',
-         position: 'absolute',
-         bottom: 0
-     },
+     
+   
      _rectangle: {
          position: "absolute",
          width: 330,
          height: 40,
          borderRadius: 32,
          opacity: 1,
-         left: 40,
-         top: 160,
+         left: 10,
+         top: 20,
          bottom: "auto",
          backgroundColor: "rgba(41, 37, 37, 1)",
      },
@@ -240,8 +301,8 @@ import React, {  useState } from 'react';
          height: 40,
          borderRadius: 32,
          opacity: 1,
-         left: 40,
-         top: 220,
+         left: 10,
+         top: 70,
          bottom: "auto",
          backgroundColor: "rgba(41, 37, 37, 1)",
      },
@@ -251,9 +312,9 @@ import React, {  useState } from 'react';
          height: 40,
          borderRadius: 32,
          opacity: 1,
-         left: 40,
-         top: 280,
-         bottom: "auto",
+         left: 10,
+         top: 120,
+         
          backgroundColor: "rgba(41, 37, 37, 1)",
      },
      searchWrapper: {
@@ -267,29 +328,7 @@ import React, {  useState } from 'react';
          bottom: "auto",
          backgroundColor: "grey",
      },
-     searchText: {
-         fontFamily: 'Montserrat-Semibold',
-         fontSize: 18,
-         top: 2,
-         left: 10,
-         marginBottom: 7,
-         color: 'white',
-         opacity: 0.5
-     },
-     iconsearch: {
-         left: 288,
-         bottom: 25
-     },
-     _category: {
-         flexDirection: 'row',
-         position: "absolute",
-         left: 20,
-         top: 100,
-         bottom: "auto",
-         fontFamily: "Tangerine",
-         fontSize: 16,
-         color: "white",
-     },
+
      _txt1: {
          flexDirection: 'row',
          position: "absolute",
@@ -311,8 +350,8 @@ import React, {  useState } from 'react';
      _txt3: {
          flexDirection: 'row',
          position: "absolute",
-         left: 15,
-         top: 8,
+         left:-270,
+         top: 4,
          bottom: "auto",
          fontSize: 16,
          color: "white",
@@ -336,61 +375,63 @@ import React, {  useState } from 'react';
          bottom: -195,
          opacity: 0.5
      },
-     _circle1 : {
-      position: "absolute",
-      width: 70,
-      height: 70,
-      borderRadius:  1000,
-      backgroundColor: "rgba(98, 90, 90, 1)",
-      left: 45,
-      bottom: 5,
-      
-      
-  
-    },
-    _circle2: {
-      position: "absolute",
-      width: 70,
-      height: 70,
-      borderRadius:  1000,
-      backgroundColor: "rgba(98, 90, 90, 1)",
-      left: 120,
-      bottom: 45,
-    },
-  
-  
-    _circle4: {
-      position: "absolute",
-      width: 70,
-      height: 70,
-      borderRadius:  1000,
-      backgroundColor: "rgba(98, 90, 90, 1)",
-      left: 279,
-      bottom: 6,
-  
-    },
-    _circle5: {
-      position: "absolute",
-      width: 70,
-      height: 70,
-      borderRadius:  1000,
-      backgroundColor: "rgba(98, 90, 90, 1)",
-      left: 200,
-      bottom: 45,
-  
-    },
     
-     dropdown: {
-         position: "absolute",
-         width: 35,
-         height: 150,
-         borderRadius: 20,
-         opacity: 1,
-         left: 9,
-         top: 25,
-         bottom: "auto",
-         backgroundColor: "rgba(41, 37, 37, 1)",
-     },
+    
+     
+     footer: {
+		position: "absolute",
+		width: 300,
+		height: 280,
+		borderRadius:  1000,
+		backgroundColor: "rgba(74, 69, 69, 1)",
+		left: 49,
+		bottom: -195,
+		opacity: 0.5
+	},
+	_circle1 : {
+		position: "absolute",
+		width: 70,
+		height: 70,
+		borderRadius:  1000,
+		backgroundColor: "rgba(98, 90, 90, 1)",
+		left: 45,
+		bottom: 5,
+		zIndex: 10
+		
+		
+
+	},
+	_circle2: {
+		position: "absolute",
+		width: 70,
+		height: 70,
+		borderRadius:  1000,
+		backgroundColor: "rgba(98, 90, 90, 1)",
+		left: 120,
+		bottom: 45,
+	},
+
+
+	_circle4: {
+		position: "absolute",
+		width: 70,
+		height: 70,
+		borderRadius:  1000,
+		backgroundColor: "rgba(98, 90, 90, 1)",
+		left: 279,
+		bottom: 6,
+
+	},
+	_circle5: {
+		position: "absolute",
+		width: 70,
+		height: 70,
+		borderRadius:  1000,
+		backgroundColor: "rgba(98, 90, 90, 1)",
+		left: 200,
+		bottom: 45,
+
+	},
      iconwork1:{
       position: "absolute",
       left: 14,
@@ -428,4 +469,3 @@ import React, {  useState } from 'react';
     },
  });
  
- export default Settings;

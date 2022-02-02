@@ -69,27 +69,15 @@ import { Searchbar } from 'react-native-paper';
 	<Searchbar style={styles.searchbar} ></Searchbar>
 	   </View>
 	  
-	   	{/* Drop down menu */}
-		   <MenuProvider style={styles.menuprov}>
-      <Menu style={styles.menuContent} >
-        <MenuTrigger style={styles.icondrop}>
-		<Icon name="chevron-double-down" size={35} color="white" />
-        </MenuTrigger>
-        <MenuOptions optionsContainerStyle={styles.optionsstyle}>
-          <MenuOption ><Icon name="note-text" size={25} color="white"  /></MenuOption>  
-          <MenuOption><Icon1 name="date" size={20} color="white" /></MenuOption> 
-          <MenuOption><Icon3 name="settings" size={20} color="white"/></MenuOption>
-        </MenuOptions>
-      </Menu>
-	</MenuProvider>
+	   	
 	
 		 
 		   
 	   
 		
 		
-		<Text style={styles._category}>WORK</Text>
-		<View style={styles._Line1}></View>
+		
+		
 	
 	
 	
@@ -105,7 +93,8 @@ import { Searchbar } from 'react-native-paper';
 		  
       {/* Today's Tasks */}
       <View style={styles.tasksWrapper}>
-     
+	  <Text style={styles._category}>WORK</Text>
+	  <View style={styles._Line1}></View>
    
         <View style={styles.items}>
           {/* This is where the tasks will go! */}
@@ -124,7 +113,19 @@ import { Searchbar } from 'react-native-paper';
       </ScrollView>
 		
 	
-	
+	{/* Drop down menu */}
+	<MenuProvider style={styles.menuprov}>
+      <Menu style={styles.menuContent} >
+        <MenuTrigger style={styles.icondrop}>
+		<Icon name="chevron-double-down" size={35} color="white" />
+        </MenuTrigger>
+        <MenuOptions optionsContainerStyle={styles.optionsstyle}>
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("All")}}><Icon name="format-list-bulleted" size={25} color="white"/></TouchableOpacity>  
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Cal")}}><Icon1 name="date" size={25} color="white" /></TouchableOpacity> 
+          <TouchableOpacity onPress={()=>{props.navigation.navigate("Set")}}><Icon3 name="settings" size={25} color="white"/></TouchableOpacity>
+        </MenuOptions>
+      </Menu>
+	</MenuProvider>
 		
 	 
 	  
@@ -231,43 +232,82 @@ import { Searchbar } from 'react-native-paper';
 
    menuprov: {
 	
-	 
-	width: 30,
-	bottom:100,
+	width: 40,
+	height: 40,
+	marginTop: -500,
+	top:-520,
+	
+	
+	
+	
+	
+
+	
    },
    
 
   menuContent: {
 
+	right: 90,
+	width: 30,
+	top:1160,
+	left: 3,
+	height:50,
 	
-	width: 32,
-	top:-20,
-	left: 3
+	
+	
+	
+	
+	
   },
   icondrop: {
-
-	  left:-2,
-	  top:100
+	  marignTop: -20,
+		bottom:-10,
+	  left:4,
+	  transform: [
+		{rotate: "180deg"}
+	],
+	height:50,
+	
+	 
 	  
   },
+  
   optionsstyle: {
-
+	top:-200,
 	width: 30,
-	backgroundColor: "grey",
+	backgroundColor: "black",
+	margintop:-200,
+	height:500,
+	
   },
 
 
  
    tasksWrapper: {
-	paddingtop: 40,
+	
+	height:200,
+	alignSelf:"flex-end",
+	
  	paddingHorizontal: 20,
-	left: 40,
-	width: 300
+
+	width: 330,
+	
+	
+	
+	
+	
+	
 	
 	
   },
   items: {
     marginTop: 10,
+	paddingTop:20,
+	right:20
+	
+
+	
   },
   writeTaskWrapper: {
 	position: 'absolute',
@@ -352,8 +392,14 @@ searchText: {
  _category: {
 	 flexDirection: 'row',
 	 position: "absolute",
-	 left: 50,
-	 top: 85,
+		paddingBottom: 40,
+		top: 0,
+		left:0,
+		right:0,
+		bottom:0,
+		justifyContent: "center",
+		alignItems: "center",
+	
 	 fontSize: 16,
 	 color: "white",
 	 
@@ -365,9 +411,9 @@ searchText: {
  _Line1: {
 	 position:"absolute",
 	height :1,
- 	width:40,
-	left: 52,
-	top: 110,
+	left: 5,
+ 	width:35,
+	top:25,
  	backgroundColor: 'grey'
  },
 

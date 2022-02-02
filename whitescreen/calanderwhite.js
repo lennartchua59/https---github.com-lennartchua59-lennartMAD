@@ -25,9 +25,8 @@ import Icon1 from 'react-native-vector-icons/Fontisto';
 import Icon2 from "react-native-vector-icons/MaterialIcons";
 import Icon3 from "react-native-vector-icons/Feather";
 import Icon4 from 'react-native-vector-icons/FontAwesome5';
-import Calendars from '../components/calanderprops';
-import Task from '../components/Taskcal'
-
+import Calendars from '../whitecomponents/calanderpropswhite';
+import Task from "../whitecomponents/Taskcalwhite";
    
    export default function App(props) {
     const [task, setTask] = useState();
@@ -88,12 +87,12 @@ import Task from '../components/Taskcal'
 	  <MenuProvider style={styles.menuprov}>
       <Menu style={styles.menuContent} >
         <MenuTrigger style={styles.icondrop}>
-		<Icon name="chevron-double-down" size={35} color="white" />
+		<Icon name="chevron-double-down" size={35} color="black" />
         </MenuTrigger>
         <MenuOptions optionsContainerStyle={styles.optionsstyle}>
-          <TouchableOpacity  onPress={()=>{props.navigation.navigate("All")}}><Icon name="format-list-bulleted" size={25} color="white"/></TouchableOpacity>  
-          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Cal")}}><Icon1 name="date" size={25} color="white" /></TouchableOpacity> 
-          <TouchableOpacity onPress={()=>{props.navigation.navigate("Set")}}><Icon3 name="settings" size={25} color="white"/></TouchableOpacity>
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("All")}}><Icon name="format-list-bulleted" size={25} color="black"/></TouchableOpacity>  
+          <TouchableOpacity  onPress={()=>{props.navigation.navigate("Cal")}}><Icon1 name="date" size={25} color="black" /></TouchableOpacity> 
+          <TouchableOpacity onPress={()=>{props.navigation.navigate("Set")}}><Icon3 name="settings" size={25} color="black"/></TouchableOpacity>
         </MenuOptions>
       </Menu>
 	</MenuProvider>
@@ -157,7 +156,7 @@ import Task from '../components/Taskcal'
      container: {
          flex: 1,
          paddingTop: 100,
-         backgroundColor: 'black',
+         backgroundColor: 'white',
      },
      cal: {
         top:10,
@@ -180,7 +179,7 @@ import Task from '../components/Taskcal'
          textAlign: 'center',
          width: '100%',
          height: 45,
-         color: 'white',
+         color: 'black',
      },
      menuprov: {
 	
@@ -228,7 +227,7 @@ import Task from '../components/Taskcal'
       optionsstyle: {
       top:-200,
       width: 30,
-      backgroundColor: "black",
+      backgroundColor: "white",
       margintop:-200,
       height:1000,
       
