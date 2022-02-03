@@ -26,7 +26,9 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
  export default function App(props) {
         const [task, setTask] = useState();
         const [taskItems, setTaskItems] = useState([]);
-       
+		
+		
+   
         const handleAddTask = () => {
           Keyboard.dismiss();
           setTaskItems([...taskItems, task])
@@ -37,6 +39,8 @@ import Icon4 from 'react-native-vector-icons/FontAwesome5';
           let itemsCopy = [...taskItems];
           itemsCopy.splice(index, 1);
           setTaskItems(itemsCopy)
+		 
+		  
         }
    return (
 	 <View style={styles.container}>
